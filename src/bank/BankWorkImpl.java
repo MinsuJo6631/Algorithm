@@ -3,6 +3,7 @@ package bank;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class BankWorkImpl implements BankWork{
@@ -15,6 +16,9 @@ public class BankWorkImpl implements BankWork{
 	ArrayList<String> personalnum1 = new ArrayList<String>();
 	Scanner scan = new Scanner(System.in);
 	int totalmoney;
+	ArrayList<Integer> PassWord = new ArrayList<Integer>();
+	ArrayList<String> CaptainName = new ArrayList<String>();
+	
 	
 	//고객메뉴 
 	@Override
@@ -153,17 +157,51 @@ public class BankWorkImpl implements BankWork{
 				System.out.println(entry1.getKey() + "님이 VIP 입니다.");
 			}
 		}
+	}
+
+	@Override
+	public void CaptainInfo() {
+		
+
+		System.out.println("은행장님의 정보를 확인하는메뉴입니다.");
+		System.out.println("1.은행장 정보변경 2.비밀번호 변경 3. 프로그램종료");
+		int choice = scan.nextInt();
+		switch(choice) {
+		
+		case 1 :
+			System.out.println("은행장님의 정보를 변경하실려면 비밀번호를 입력해주세요");
+			int pass = scan.nextInt();
+			if(pass == PassWord.get(0)) {
+				System.out.println("은행장님의 이름을 변경합니다.");
+				System.out.println("현재 은행장님 의 성명 : " + CaptainName.get(0));
+				System.out.println("변경하실 이름을 입력해주세요");
+				String name = scan.next();
+				CaptainName.set(0,name);
+				System.out.println(CaptainName.get(0) + "은행장님 부임을 환영합니다.");
+				
+				break;
+				
+			}
+			
+		
+		case 2 :
+			System.out.println("비밀번호를 변경하실려면 현재비밀번호를 입력해주세요");
+			int pass1 = scan.nextInt();
+			if(pass1 == PassWord.get(0)) {
+				System.out.println("비밀번호를 변경합니다");
+				System.out.println("변경하실 비밀번호를 입력해주세요");
+				int changepassword = scan.nextInt();
+				PassWord.set(0, changepassword);
+				System.out.println("변경되었습니다.");
+				break;
+			}
+			
+			
+		case 3 :
+			System.out.println("시스템을 종료합니다");
+			System.exit(0);
+			
+		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

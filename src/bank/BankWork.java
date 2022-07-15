@@ -11,5 +11,7 @@ public interface BankWork {
 	public void CountCostomer();
 	public void SeeConstomerInfo();
 	public void SeeVip();
+	
+	public void CaptainInfo();
 
 }

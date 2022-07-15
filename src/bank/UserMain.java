@@ -8,7 +8,7 @@ public class UserMain {
 		Scanner scan = new Scanner(System.in);
 		BankWorkImpl bank = new BankWorkImpl();
 		
-		totalMenu : 
+		TotalMenu : 
 		while(true) {
 			System.out.println("모드를 선택해주세요");
 			System.out.println("1.손님 2.은행장님");
@@ -16,8 +16,7 @@ public class UserMain {
 			
 			switch(modechoice) {
 			
-			case 1:
-				constumer : 
+			case 1: 
 				while(true){
 					System.out.println("은행업무를 선택해주세요");
 					System.out.println("1.계좌 조회 2.입금 3.계좌이체 4. 계좌개설 5. 은행업무 종료");
@@ -47,18 +46,22 @@ public class UserMain {
 						
 						System.out.println("은행업무를 종료합니다.");
 						System.out.println("안녕히가세요");
-						continue totalMenu;
+						continue TotalMenu;
 					}
 				}
 				
 			case 2:
 				System.out.println("은행장님 이시면 비밀번호를 입력해주세요");
+				System.out.println("초기 비밀번호 1234");
+				bank.PassWord.add(1234);
+				bank.CaptainName.add("MinsuJo");
 				int password = scan.nextInt();
-				if(password == 6631) {
-					System.out.println("안녕하세요 조민수 은행장님!");
+				
+				if(password == bank.PassWord.get(0)) {
+					System.out.println("안녕하세요"+ bank.CaptainName.get(0) + "은행장님!");
 					while(true) {
 						System.out.println("메뉴를 선택해주세요!");
-						System.out.println("1.은행총 보유자산 확인 2.고객 수 확인 3.고객 개인정보내역 확인 4. VIP고객 확인 5.프로그램종료");
+						System.out.println("1.은행총 보유자산 확인 2.고객 수 확인 3.고객 개인정보내역 확인 4. VIP고객 확인 5.은행장 정보 6.프로그램종료");
 						System.out.println("VIP고객님은 보유금액이 100000원 이상인금액이 해당됩니다");
 						int choice = scan.nextInt();
 						
@@ -79,8 +82,12 @@ public class UserMain {
 							break;
 							
 						case 5 :
+							bank.CaptainInfo();
+							break;
+							
+						case 6 :
 							System.out.println("시스템을 종료합니다");
-							System.exit(0);
+							
 							
 						
 						}
